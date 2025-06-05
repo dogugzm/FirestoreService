@@ -1,11 +1,11 @@
 ﻿using System;
-using UnityEngine.UI;
-using VContainer;
-using UnityEngine;
 using System.Threading.Tasks;
 using DG.Tweening;
+using UnityEngine;
+using UnityEngine.UI;
+using VContainer;
 
-namespace Assets.Scripts.PanelService
+namespace PanelService
 {
     public interface IPanel
     {
@@ -19,10 +19,8 @@ namespace Assets.Scripts.PanelService
         void SetPanelData(IPanelData data);
         void FitToCanvas();
         void Reset();
-
         public event Action OnPanelHide;
     }
-
 
     public abstract class InnerPanelBase<TPanel> : PanelBase where TPanel : PanelBase
     {
@@ -49,6 +47,7 @@ namespace Assets.Scripts.PanelService
         }
     }
 
+
     [RequireComponent(typeof(CanvasGroup), typeof(Canvas), typeof(GraphicRaycaster))]
     public abstract class PanelBase : MonoBehaviour, IPanel
     {
@@ -60,6 +59,7 @@ namespace Assets.Scripts.PanelService
 
         public event Action OnPanelHide;
 
+        protected virtual string PanelName => GetType().Name;
 
         protected virtual void Awake()
         {

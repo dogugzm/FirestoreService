@@ -1,5 +1,6 @@
 namespace MockDataSystem
 {
+    
     public class MockService
     {
         private readonly IMockGenerator _generator;
@@ -14,6 +15,4 @@ namespace MockDataSystem
             return _generator.Generate<T>();
         }
     }
-
-   
 }

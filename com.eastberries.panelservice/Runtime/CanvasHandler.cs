@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.PanelService
+namespace PanelService
 {
     public enum CanvasId
     {

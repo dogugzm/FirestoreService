@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace Assets.Scripts.PanelService
+namespace PanelService
 {
-    using UnityEngine;
-
     [Serializable]
     public class PanelConfig
     {

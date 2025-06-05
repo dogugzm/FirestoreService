@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Assets.Scripts.PanelService
+namespace PanelService
 {
     public interface IPanelPool
     {

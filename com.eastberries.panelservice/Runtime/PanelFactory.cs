@@ -1,8 +1,8 @@
-﻿using VContainer.Unity;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
-namespace Assets.Scripts.PanelService
+namespace PanelService
 {
     public interface IPanelFactory
     {

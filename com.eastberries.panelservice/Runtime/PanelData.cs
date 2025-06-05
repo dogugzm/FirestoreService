@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.PanelService
+﻿namespace PanelService
 {
     public interface IPanelData
     {
