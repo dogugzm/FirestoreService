@@ -2,8 +2,6 @@
 using Firebase.Firestore;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Assets.Scripts.LoadingService;
 using Cysharp.Threading.Tasks;
 using VContainer;
 

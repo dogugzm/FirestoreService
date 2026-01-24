@@ -26,6 +26,10 @@ namespace PanelService
         public bool IgnoreJoinStack { get; }
     }
 
+    public interface IPersistantPanel
+    {
+    }
+
     public class PanelService : IPanelService
     {
         private readonly Dictionary<string, PanelConfig> _panelConfigs = new();
@@ -82,7 +86,16 @@ namespace PanelService
                 throw new ArgumentException($"Panel config for panelId {panelId} not found!");
             }
 
-            if (TryGetPanel(out T existingPanel))
+            // Hide the current panel if it exists and isn’t the same as the target panel
+            if (_currentPanel != null &&
+                !_currentPanel.transform.TryGetComponent(out IPersistantPanel _) &&
+                (!TryGetPanel(out T existingPanel) ||
+                 existingPanel.PanelData.PanelId != _currentPanel.PanelData.PanelId))
+            {
+                await HidePanelAsync(_currentPanel);
+            }
+
+            if (TryGetPanel(out existingPanel))
             {
                 if (existingPanel is IIgnoreJoinStack ignoreJoinStack && ignoreJoinStack.IgnoreJoinStack)
                 {
@@ -121,6 +134,7 @@ namespace PanelService
                 {
                     parameterHolder.Parameter = panelParameter;
                 }
+
 
                 panel.Reset();
                 panel.Initialize();
